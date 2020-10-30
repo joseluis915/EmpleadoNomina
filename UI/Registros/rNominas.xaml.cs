@@ -141,7 +141,7 @@ namespace EmpleadoNomina.UI.Registros
         {
             double SM = double.Parse(SalarioMensualTextBox.Text);
 
-            double HorasExtra = double.Parse(HorasExtraTextBox.Text);
+            //double HorasExtra = double.Parse(HorasExtraTextBox.Text);
 
             //—————————————[Formulas para Seguro Familiar de Salud o SFS]—————————————
             double SFS = 0.0304;
@@ -150,7 +150,7 @@ namespace EmpleadoNomina.UI.Registros
             double AFP = 0.0287;
 
             //—————————————[Formulas para Salario Mensual y Horas Extra]—————————————
-            double SMEX = SM + HorasExtra;
+            //double SMEX = SM + HorasExtra;
 
             //—————————————[Formulas para Impuesto sobre renta o ISR]—————————————
             double DEDUC = SFS + AFP;
@@ -168,7 +168,7 @@ namespace EmpleadoNomina.UI.Registros
             AFPTextBox.Text = Convert.ToString(SM * AFP);
             ISRTextBox.Text = Convert.ToString(ISR);
 
-            SueldoTotalTextBox.Text = Convert.ToString(SMEX);
+            SueldoTotalTextBox.Text = Convert.ToString(SM);
             TotalDecuentosTextBox.Text = Convert.ToString(TotalD);
         }
     }
