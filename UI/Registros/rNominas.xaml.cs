@@ -140,6 +140,7 @@ namespace EmpleadoNomina.UI.Registros
         private void SalarioMensualTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             double SM = double.Parse(SalarioMensualTextBox.Text);
+
             double HorasExtra = double.Parse(HorasExtraTextBox.Text);
 
             //—————————————[Formulas para Seguro Familiar de Salud o SFS]—————————————
