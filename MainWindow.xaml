@@ -1,0 +1,61 @@
+﻿<Window x:Class="EmpleadoNomina.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EmpleadoNomina"
+        mc:Ignorable="d"
+        Title="Menú principal" Height="400" Width="400" WindowStartupLocation="CenterScreen" Icon="/Resources/Agendar.png" ResizeMode="CanMinimize">
+    <Grid>
+        <StackPanel>
+            <Menu FontSize="16" Height="26" Background="DodgerBlue" Foreground="White" >
+                <!--————————————————————————————————————————[ Registros ]————————————————————————————————————————-->
+                <MenuItem Header="Registros">
+                    <MenuItem x:Name="rEmpleadosMenuItem" Click="rEmpleadosMenuItem_Click" Header="Registrar Empleado" Foreground="Black">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/Usuario.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <MenuItem x:Name="rNominasMenuItem" Click="rNominasMenuItem_Click" Header="Registrar Nomina" Foreground="Black">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/Fecha.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <!--—————————————————————————————————————————[ Consultas ]—————————————————————————————————————————-->
+                <MenuItem Header="Consultas">
+                    <MenuItem x:Name="cEmpleadosMenuItem" Click="cEmpleadosMenuItem_Click" Header="Consultar Empleado" Foreground="Black">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/Fecha.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <!--———————————————————————————————————————[ Informacion ]———————————————————————————————————————-->
+                <MenuItem x:Name="InformacionMenuItem" Click="InformacionMenuItem_Click" Header="Informacion"/>
+            </Menu>
+        </StackPanel>
+        <!--————————————————————————————————————————————[ MENU PRINCIPAL ]————————————————————————————————————————————-->
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Image Source="/Resources/Home.png" Width="70"/>
+            <Label Content="Menú Principal" FontWeight="Bold" Height="50" FontSize="36" HorizontalAlignment="Center" />
+
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <Label Content="Programa creado:" FontWeight="Bold" FontSize="18" FontStyle="Italic"/>
+                <Label x:Name="CreacionLabel" Content="28/10/2020" FontSize="18" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Ultima modificación:" FontWeight="Bold" FontSize="18" FontStyle="Italic"/>
+                <Label x:Name="ModificacionLabel" Content="30/10/2020" FontSize="18" />
+            </StackPanel>
+
+            <Label x:Name="CreadoPorLabel" Content="©2020   José Luis — 2015-0565" FontWeight="Bold"  FontSize="16" FontStyle="Italic" HorizontalAlignment="Center" Margin="0,20,0,0"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label Content="Versión:" FontWeight="Bold" FontSize="16" FontStyle="Italic"/>
+                <Label x:Name="VersionLabel" Content="Beta 1.0" FontSize="16"/>
+            </StackPanel>
+            <!--———————————————————————————————————————————————————————————————————————————————————————————————-->
+        </StackPanel>
+    </Grid>
+</Window>
