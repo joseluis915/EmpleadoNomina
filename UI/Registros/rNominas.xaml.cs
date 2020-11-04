@@ -139,6 +139,15 @@ namespace EmpleadoNomina.UI.Registros
 
         private void SalarioMensualTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (SalarioMensualTextBox.Text == "0")
+            {
+                HorasExtraTextBox.IsEnabled = false;
+            }
+            else
+            {
+                HorasExtraTextBox.IsEnabled = true;
+            }
+
             double SM = double.Parse(SalarioMensualTextBox.Text.ToString());
 
             //—————————————[Formulas para Seguro Familiar de Salud o SFS]—————————————
