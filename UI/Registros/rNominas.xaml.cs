@@ -139,37 +139,73 @@ namespace EmpleadoNomina.UI.Registros
 
         private void SalarioMensualTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            double SM = double.Parse(SalarioMensualTextBox.Text);
-
-            //double HorasExtra = double.Parse(HorasExtraTextBox.Text);
+            double SM = double.Parse(SalarioMensualTextBox.Text.ToString());
 
             //—————————————[Formulas para Seguro Familiar de Salud o SFS]—————————————
             double SFS = 0.0304;
 
             //—————————————[Formulas para Administradora de Fondos de Pensiones o AFP]—————————————
             double AFP = 0.0287;
-
-            //—————————————[Formulas para Salario Mensual y Horas Extra]—————————————
-            //double SMEX = SM + HorasExtra;
+            //—————————————————————————————————————————[Total SFS y AFP]————————————————————————————————————————————
+            double T_SFS = (SM * SFS);
+            double T_AFP = (SM * AFP);
 
             //—————————————[Formulas para Impuesto sobre renta o ISR]—————————————
-            double DEDUC = SFS + AFP;
+            double DEDUC = T_SFS + T_AFP;
             double RDEDUC = SM - DEDUC;
             double IMPOx12 = RDEDUC * 12;
             double EXCEDENT = IMPOx12 - 624329.01;
-            double APLICA20 = EXCEDENT * 0.2;
+            double APLICA20 = EXCEDENT * 0.20;
             double PASO_ADICC = APLICA20 + 31216;
 
-            double ISR = PASO_ADICC / 12;
-            //————————————————————————————————————————————————
-            double TotalD = SM - (SFS + AFP + ISR);
+            double T_ISR = PASO_ADICC / 12;
 
-            SFSTextBox.Text = Convert.ToString(SM * SFS);
-            AFPTextBox.Text = Convert.ToString(SM * AFP);
-            ISRTextBox.Text = Convert.ToString(ISR);
+            //—————————————————————————————————————————[Total Descuentos]————————————————————————————————————————————
+            double T_Descuentos = (T_SFS + T_AFP + T_ISR);
 
-            SueldoTotalTextBox.Text = Convert.ToString(SM);
-            TotalDecuentosTextBox.Text = Convert.ToString(TotalD);
+            SFSTextBox.Text = Convert.ToString(Math.Round(T_SFS, 2));
+            AFPTextBox.Text = Convert.ToString(Math.Round(T_AFP, 2));
+            ISRTextBox.Text = Convert.ToString(Math.Round(T_ISR, 2));
+
+            SueldoTotalTextBox.Text = Convert.ToString(Math.Round(SM, 2));
+            TotalDecuentosTextBox.Text = Convert.ToString(Math.Round(T_Descuentos, 2));
+        }
+
+        private void HorasExtraTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            double SM = double.Parse(SalarioMensualTextBox.Text.ToString());
+
+            //—————————————[Formulas para Salario Mensual y Horas Extra]—————————————
+            double HorasExtra = double.Parse(HorasExtraTextBox.Text);
+
+            //—————————————[Formulas para Seguro Familiar de Salud o SFS]—————————————
+            double SFS = 0.0304;
+
+            //—————————————[Formulas para Administradora de Fondos de Pensiones o AFP]—————————————
+            double AFP = 0.0287;
+            //—————————————————————————————————————————[Total SFS y AFP]————————————————————————————————————————————
+            double T_SFS = (SM * SFS);
+            double T_AFP = (SM * AFP);
+
+            //—————————————[Formulas para Impuesto sobre renta o ISR]—————————————
+            double DEDUC = T_SFS + T_AFP;
+            double RDEDUC = SM + HorasExtra - DEDUC;
+            double IMPOx12 = RDEDUC * 12;
+            double EXCEDENT = IMPOx12 - 624329.01;
+            double APLICA20 = EXCEDENT * 0.20;
+            double PASO_ADICC = APLICA20 + 31216;
+
+            double T_ISR = PASO_ADICC / 12;
+
+            //—————————————————————————————————————————[Total Descuentos]————————————————————————————————————————————
+            double T_Descuentos = (T_SFS + T_AFP + T_ISR);
+
+            SFSTextBox.Text = Convert.ToString(Math.Round(T_SFS, 2));
+            AFPTextBox.Text = Convert.ToString(Math.Round(T_AFP, 2));
+            ISRTextBox.Text = Convert.ToString(Math.Round(T_ISR, 2));
+
+            SueldoTotalTextBox.Text = Convert.ToString(Math.Round(SM + HorasExtra, 2));
+            TotalDecuentosTextBox.Text = Convert.ToString(Math.Round(T_Descuentos, 2));
         }
     }
 }

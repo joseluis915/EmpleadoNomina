@@ -28,7 +28,7 @@
             <TextBox x:Name="SalarioMensualTextBox" Text="{Binding SalarioMensual}" Height="25" VerticalContentAlignment="Center" TextChanged="SalarioMensualTextBox_TextChanged"/>
             <!--——————————————————————————————————————————————[ HorasExtra ]——————————————————————————————————————————————-->
             <Label Content="HorasExtra" FontWeight="Bold" Margin="0,5,0,0"/>
-            <TextBox x:Name="HorasExtraTextBox" Text="{Binding HorasExtra}" Height="25" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="HorasExtraTextBox" Text="{Binding HorasExtra}" Height="25" VerticalContentAlignment="Center" TextChanged="HorasExtraTextBox_TextChanged"/>
             <!--——————————————————————————————————————————————[ Fecha ]——————————————————————————————————————————————-->
             <Label Content="Fecha" FontWeight="Bold" Margin="0,5,0,0"/>
             <DatePicker x:Name="FechaDatePicker" SelectedDate="{Binding Fecha}" Height="25" VerticalContentAlignment="Center"/>
